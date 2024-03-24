@@ -6,7 +6,7 @@
   <link href="http://uiuiqkjn.github.io/atom.xml" rel="self"/>
   
   <link href="http://uiuiqkjn.github.io/"/>
-  <updated>2024-03-24T09:31:55.626Z</updated>
+  <updated>2024-03-24T09:49:43.500Z</updated>
   <id>http://uiuiqkjn.github.io/</id>
   
   <author>
@@ -21,8 +21,15 @@
     <link href="http://uiuiqkjn.github.io/2024/03/24/Adventure-Journey/"/>
     <id>http://uiuiqkjn.github.io/2024/03/24/Adventure-Journey/</id>
     <published>2024-03-24T09:31:55.000Z</published>
-    <updated>2024-03-24T09:31:55.626Z</updated>
+    <updated>2024-03-24T09:49:43.500Z</updated>
     
+    <content type="html"><![CDATA[<h1 id="冒险之旅-Adventure-Journey"><a href="#冒险之旅-Adventure-Journey" class="headerlink" title="冒险之旅 - Adventure Journey"></a>冒险之旅 - Adventure Journey</h1><p>欢迎来到《冒险之旅》！这是一个充满刺激和挑战的文字冒险游戏，让您扮演一位勇敢的冒险者，探索未知的世界，面对各种怪物和挑战，获得经验和财富，并最终击败强大的巨龙赢得游戏。</p><h2 id="功能特点"><a href="#功能特点" class="headerlink" title="功能特点"></a>功能特点</h2><ul><li>多样化的地点和事件：游戏设有多个地点和事件，玩家可以在城镇广场、商店、洞穴等地探险，并面对不同的冒险挑战。</li><li>装备和战斗系统：玩家可以购买各种武器和道具，提升自己的战斗能力，在与怪物的战斗中斩获胜利。</li><li>随机元素和惊喜事件：游戏中包含随机生成的元素，例如随机数字猜测游戏、特殊事件等，为冒险增添了趣味和惊喜。</li><li>胜利和失败结局：玩家可以通过击败巨龙获得游戏胜利，或者在冒险过程中遭遇失败，体验不同的结局和反馈。</li></ul><h2 id="安装和运行"><a href="#安装和运行" class="headerlink" title="安装和运行"></a>安装和运行</h2><ol><li>克隆项目到本地：<br>git clone <a href="https://github.com/uiuiqkjn/Adventure-Journey.git">https://github.com/uiuiqkjn/Adventure-Journey.git</a></li><li>打开 <code>index.html</code> 文件：<br>cd Adventure-Journey</li><li>在浏览器中打开 <code>index.html</code> 文件即可开始游戏。</li></ol><h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><p>欢迎大家贡献代码、提交问题或提供建议。您可以通过以下方式参与：</p><ol><li>提交 Issue：<a href="https://github.com/uiuiqkjn/Adventure-Journey/issues">项目问题</a></li><li>提交 Pull Request：<a href="https://github.com/uiuiqkjn/Adventure-Journey/pulls">贡献代码</a></li></ol><h2 id="项目地址"><a href="#项目地址" class="headerlink" title="项目地址"></a>项目地址</h2><p><a href="https://github.com/uiuiqkjn/Adventure-Journey">GitHub 项目地址</a></p><h2 id="许可证"><a href="#许可证" class="headerlink" title="许可证"></a>许可证</h2><p>该项目采用 <a href="LICENSE">MIT 许可证</a> 进行许可。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;冒险之旅-Adventure-Journey&quot;&gt;&lt;a href=&quot;#冒险之旅-Adventure-Journey&quot; class=&quot;headerlink&quot; title=&quot;冒险之旅 - Adventure Journey&quot;&gt;&lt;/a&gt;冒险之旅 - Adventure J</summary>
+      
     
     
     
