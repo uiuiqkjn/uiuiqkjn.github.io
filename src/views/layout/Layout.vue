@@ -14,7 +14,6 @@
             <h1 class="project-name">{{blogTitle}}</h1>
             <h2 class="project-tagline">{{blogDescribe}}</h2>
             <a :href="'https://github.com/'+githubUsername" class="btn" target="_blank">GitHub主页</a>
-            <a href="https://github.com/GitHub-Laziji/vblog" class="btn" target="_blank" v-if="!mini">博客源码</a>
         </section>
         <div style="position:relative;  z-index:2;margin: auto;margin-top:-30px;width:64rem;">
             <el-card shadow="never" :body-style="{ padding: '0px' }">
@@ -24,6 +23,7 @@
                             <el-submenu index="#more">
                                 <template slot="title">了解博主</template>
                                 <el-menu-item index="#githubHome">github主页</el-menu-item>
+                                <el-menu-item index="#csdn">csdn主页</el-menu-item>
                                 <el-menu-item index="#blog">其他博客</el-menu-item>
                             </el-submenu>
                             <el-submenu index="#webSites" v-if="webSites.length>0">
@@ -33,40 +33,40 @@
                         </el-menu>
                     </el-col>
                     <el-col :span="8" style="text-align: center;padding: 12px 0px 0px 10px">
-                        <el-row>
-                            <el-col :span="4">
-                                <el-popover placement="top" trigger="hover">
-                                    <div style="text-align: center">
-                                        <el-progress color="#67C23A" type="circle" :percentage="music.volume"></el-progress>
-                                        <br>
-                                        <el-button @click="changeVolume(-10)" icon="el-icon-minus" circle></el-button>
-                                        <el-button @click="changeVolume(10)" icon="el-icon-plus" circle></el-button>
-                                    </div>
+<!--                        <el-row>-->
+<!--                            <el-col :span="4">-->
+<!--                                <el-popover placement="top" trigger="hover">-->
+<!--                                    <div style="text-align: center">-->
+<!--                                        <el-progress color="#67C23A" type="circle" :percentage="music.volume"></el-progress>-->
+<!--                                        <br>-->
+<!--                                        <el-button @click="changeVolume(-10)" icon="el-icon-minus" circle></el-button>-->
+<!--                                        <el-button @click="changeVolume(10)" icon="el-icon-plus" circle></el-button>-->
+<!--                                    </div>-->
 
-                                    <el-button @click="play" id="play" slot="reference" :icon="music.isPlay?'el-icon-refresh':'el-icon-caret-right'" circle></el-button>
-                                </el-popover>
-                            </el-col>
-                            <el-col :span="14" style="padding-left: 20px">
-                                <el-slider @change="changeTime" :format-tooltip="$util.formatTime" :max="music.maxTime" v-model="music.currentTime" style="width: 100%;"></el-slider>
-                            </el-col>
-                            <el-col :span="6" style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px">
-                                {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}}
-                            </el-col>
-                        </el-row>
+<!--                                    <el-button @click="play" id="play" slot="reference" :icon="music.isPlay?'el-icon-refresh':'el-icon-caret-right'" circle></el-button>-->
+<!--                                </el-popover>-->
+<!--                            </el-col>-->
+<!--                            <el-col :span="14" style="padding-left: 20px">-->
+<!--                                <el-slider @change="changeTime" :format-tooltip="$util.formatTime" :max="music.maxTime" v-model="music.currentTime" style="width: 100%;"></el-slider>-->
+<!--                            </el-col>-->
+<!--                            <el-col :span="6" style="padding: 9px 0px 0px 10px;color:#909399;font-size: 13px">-->
+<!--                                {{$util.formatTime(music.currentTime)}}/{{$util.formatTime(music.maxTime)}}-->
+<!--                            </el-col>-->
+<!--                        </el-row>-->
 
-                        <audio ref="music" loop autoplay v-if="audioAutoPlay">
-                            <source :src="audioUrl" type="audio/mpeg">
-                        </audio>
-                        <audio ref="music" loop v-else>
-                            <source :src="audioUrl" type="audio/mpeg">
-                        </audio>
+<!--                        <audio ref="music" loop autoplay v-if="audioAutoPlay">-->
+<!--                            <source :src="audioUrl" type="audio/mpeg">-->
+<!--                        </audio>-->
+<!--                        <audio ref="music" loop v-else>-->
+<!--                            <source :src="audioUrl" type="audio/mpeg">-->
+<!--                        </audio>-->
                     </el-col>
                     <el-col :span="4" style="text-align: right;">
                         <div style="font-size: 20px;color:#606266;margin-top: 5px">
                             <b>{{githubUsername}}</b>
                         </div>
                         <div style="color:#606266;">
-                            <i class="el-icon-location"></i>&nbsp;{{location?location:'未填写地址'}}
+                            <i class="el-icon-location"></i>&nbsp;{{location?location:'CN'}}
                             <br>
                         </div>
                     </el-col>
@@ -185,6 +185,9 @@
                     case "#githubHome":
                         window.open('https://github.com/' + this.githubUsername)
                         break
+                    case "#csdn":
+                        window.open('https://blog.csdn.net/2301_76723816?spm=1000.2115.3001.5343' + this.githubUsername)
+                        break
                     case "#blog":
                         if (this.blog) {
                             window.open((this.blog.match(/https?:\/\//i)?'':'https://') + this.blog)
@@ -222,41 +225,41 @@
                     this.fullButton.full = false
                 }
             },
-            listenMusic() {
-                if (!this.$refs.music) {
-                    return
-                }
-                if (this.$refs.music.readyState) {
-                    this.music.maxTime = this.$refs.music.duration
-                }
-                this.music.isPlay = !this.$refs.music.paused
-                this.music.currentTime = this.$refs.music.currentTime
-            },
-            play() {
-                if (this.$refs.music.paused) {
-                    this.$refs.music.play()
-                } else {
-                    this.$refs.music.pause()
-                }
-                this.music.isPlay = !this.$refs.music.paused
-                this.$nextTick(() => {
-                    document.getElementById('play').blur()
-                })
-
-            },
-            changeTime(time) {
-                this.$refs.music.currentTime = time
-            },
-            changeVolume(v) {
-                this.music.volume += v
-                if (this.music.volume > 100) {
-                    this.music.volume = 100
-                }
-                if (this.music.volume < 0) {
-                    this.music.volume = 0
-                }
-                this.$refs.music.volume = this.music.volume / 100
-            }
+            // listenMusic() {
+            //     if (!this.$refs.music) {
+            //         return
+            //     }
+            //     if (this.$refs.music.readyState) {
+            //         this.music.maxTime = this.$refs.music.duration
+            //     }
+            //     this.music.isPlay = !this.$refs.music.paused
+            //     this.music.currentTime = this.$refs.music.currentTime
+            // },
+            // play() {
+            //     if (this.$refs.music.paused) {
+            //         this.$refs.music.play()
+            //     } else {
+            //         this.$refs.music.pause()
+            //     }
+            //     this.music.isPlay = !this.$refs.music.paused
+            //     this.$nextTick(() => {
+            //         document.getElementById('play').blur()
+            //     })
+            //
+            // },
+            // changeTime(time) {
+            //     this.$refs.music.currentTime = time
+            // },
+            // changeVolume(v) {
+            //     this.music.volume += v
+            //     if (this.music.volume > 100) {
+            //         this.music.volume = 100
+            //     }
+            //     if (this.music.volume < 0) {
+            //         this.music.volume = 0
+            //     }
+            //     this.$refs.music.volume = this.music.volume / 100
+            // }
         }
     }
 </script>
