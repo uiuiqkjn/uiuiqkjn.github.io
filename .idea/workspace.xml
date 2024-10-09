@@ -4,7 +4,126 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5d6222df-f5cd-414b-9bd5-a5ec814eb68b" name="Changes" comment="" />
+    <list default="true" id="5d6222df-f5cd-414b-9bd5-a5ec814eb68b" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.browserslistrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.editorconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.husky/pre-commit" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.markdownlint.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.npmrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/functions/render.func/.vc-config.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/functions/render.func/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/404.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/Scheme初探.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/404.efe3fc71.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/Search.e8a8d416.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.3b14054e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.40cf44c5.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.41a32359.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.906d67ca.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/about.6e6daff0.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/about.749ae34c.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/client.83b22eca.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/index.4cf1643e.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/index.ed373d49.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/page.7d71c7ef.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/about/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/astropaper-og.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/scheme初探/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/使用github_pagesissuesapi建立个人博客/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/傲慢与偏见让我们换一个角度/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/开始于开始时/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/漫谈程序控制流/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/posts/论惰性/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/rss.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/search/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/sitemap-0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/sitemap-index.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/tags/blog/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/tags/chinese/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/tags/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/tags/programming/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/toggle-theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/使用github pages + issues + api建立个人博客.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/傲慢与偏见——让我们换一个角度.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/开始于开始时.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/漫谈程序控制流.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vercel/output/static/论惰性.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/extensions.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AstroPaper-lighthouse-score.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pnpm-lock.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/astropaper-og.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/toggle-theme.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/socialIcons.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Breadcrumbs.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Card.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Datetime.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Footer.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Giscus.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Header.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hr.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/LinkButton.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Search.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Socials.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Tag.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/_schemas.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2014/Scheme初探.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2014/使用github_pages+issues+api建立个人博客.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2014/傲慢与偏见——让我们换一个角度.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2014/开始于开始时.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2014/论惰性.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/blog/2015/漫谈程序控制流.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/content/config.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/env.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/AboutLayout.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/Layout.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/Main.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/PostDetails.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/layouts/Posts.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/404.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/[ogTitle].svg.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/about.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/posts/[slug].astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/posts/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/rss.xml.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/search.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tags/[tag].astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/tags/index.astro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/styles/base.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/types.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/generateOgImage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getPageNumbers.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getPostsByTag.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getSortedPosts.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/getUniqueTags.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/slugify.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tailwind.config.cjs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/vercel.json" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,25 +140,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Jest.HelloWorld.vue.executor": "Run",
-    "Node.js.main.js.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "/home/zhang/code/uiuiqkjn.github.io",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs.jest.jest_package": "/home/zhang/code/uiuiqkjn.github.io/node_modules/jest",
-    "nodejs_interpreter_path": "/home/zhang/.var/app/com.jetbrains.WebStorm/config/JetBrains/WebStorm2024.2/node/versions/20.0.0/bin/node",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "settings.vue",
-    "ts.external.directory.path": "/app/extra/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Jest.HelloWorld.vue.executor&quot;: &quot;Run&quot;,
+    &quot;Node.js.main.js.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/zhang/code/uiuiqkjn.github.io&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs.jest.jest_package&quot;: &quot;/home/zhang/code/uiuiqkjn.github.io/node_modules/jest&quot;,
+    &quot;nodejs_interpreter_path&quot;: &quot;/home/zhang/.var/app/com.jetbrains.WebStorm/config/JetBrains/WebStorm2024.2/node/versions/20.0.0/bin/node&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.vue&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/app/extra/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="HelloWorld.vue" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
@@ -78,7 +197,7 @@
       <workItem from="1728386713501" duration="812000" />
       <workItem from="1728387537507" duration="378000" />
       <workItem from="1728387983251" duration="8611000" />
-      <workItem from="1728445364208" duration="2138000" />
+      <workItem from="1728445364208" duration="2441000" />
     </task>
     <servers />
   </component>
