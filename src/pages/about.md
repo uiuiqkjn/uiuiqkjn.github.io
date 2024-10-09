@@ -3,19 +3,15 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-## Me
+### Me
 
-Focus on Data & ML.
+Focus on ML/DL, and I am interested in the field of computer vision and natural language processing.
 
-### Path
-
-⬇ Data Governance Products (data lineage/monitoring/ops)  
-⬇ FAAS Data Platform (Deployment/UI/Workflow generation)  
-⬇ ML Feature Plaftorm (e2e ML feature lifecycle management)  
-⬇ ML Platform (Model Serving, Model CI/CD, Realtime ML, RL, LLM)  
-⬇ LLM Hallucination
+- 🔭 I’m currently working on something cool.
+- 🌱 I’m currently learning Everything I like.
+- 💬 Ask me about anything related to Python.
 
 ### Links
 
-- [Linkedin](https://www.linkedin.com/in/hflhmartin/)
+- [CSDN](https://blog.csdn.net/2301_76723816?spm=1000.2115.3001.5343)
 - [Github](https://github.com/martin-liu)

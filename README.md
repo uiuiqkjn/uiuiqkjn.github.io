@@ -1,10 +1,9 @@
 # Introduction
 
-Blog system modified from [AstroPaper](https://github.com/satnaing/astro-paper):
+- 本博客使用 github pages + issues + api 搭建，使用[Vercel](https://vercel.com/) 部署至 https://www.uiplot.top/.
 
-- Added [giscus](https://giscus.app/) for comment.
-- Deploy with [Vercel](https://vercel.com/) to https://mliu.me/
+- 本博客用于记录学习笔记、技本分享，欢迎访问.
 
-## Development
+- 本博客使用了 [utterances](https://utteranc.es/) 评论系统，评论将会同步到对应的 issue 中.
 
-- `pnpm install` and then `pnpm run dev`
+- 本博客主题来自大佬 [martin-liu](https://github.com/martin-liu/martin-liu.github.io).
