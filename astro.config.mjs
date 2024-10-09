@@ -20,7 +20,7 @@ export default defineConfig({
     }),
     react(),
     sitemap(),
-    compress(),
+    // compress(),
   ],
   markdown: {
     remarkPlugins: [
