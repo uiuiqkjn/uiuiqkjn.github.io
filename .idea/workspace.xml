@@ -5,46 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d6222df-f5cd-414b-9bd5-a5ec814eb68b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.vercel/output/config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/functions/render.func/.vc-config.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/functions/render.func/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/Scheme初探.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/404.efe3fc71.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/Search.e8a8d416.js" beforeDir="false" afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/Search.e8a8d416.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.3b14054e.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.40cf44c5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.41a32359.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/_slug_.906d67ca.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/about.6e6daff0.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/about.749ae34c.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/client.83b22eca.js" beforeDir="false" afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/client.83b22eca.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/index.4cf1643e.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/index.ed373d49.js" beforeDir="false" afterPath="$PROJECT_DIR$/.vercel/output/static/_astro/index.ed373d49.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/about/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/scheme初探/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/使用github_pagesissuesapi建立个人博客/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/傲慢与偏见让我们换一个角度/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/开始于开始时/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/漫谈程序控制流/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/posts/论惰性/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/rss.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/search/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/sitemap-0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/sitemap-index.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/tags/blog/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/tags/chinese/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/tags/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/tags/programming/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/toggle-theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/.vercel/output/static/toggle-theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/使用github pages + issues + api建立个人博客.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/傲慢与偏见——让我们换一个角度.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/开始于开始时.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/漫谈程序控制流.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vercel/output/static/论惰性.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.husky/pre-commit" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/Search.e8a8d416.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/client.83b22eca.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/index.ed373d49.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/_astro/page.7d71c7ef.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/astropaper-og.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vercel/output/static/toggle-theme.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/extensions.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/astro.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/astro.config.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/blog/2024/Hello World.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/blog/2024/Hello World.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +94,7 @@
       <workItem from="1728386713501" duration="812000" />
       <workItem from="1728387537507" duration="378000" />
       <workItem from="1728387983251" duration="8611000" />
-      <workItem from="1728445364208" duration="2836000" />
+      <workItem from="1728445364208" duration="5336000" />
     </task>
     <servers />
   </component>
