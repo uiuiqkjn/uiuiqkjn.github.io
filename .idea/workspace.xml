@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5d6222df-f5cd-414b-9bd5-a5ec814eb68b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Giscus.astro" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Giscus.astro" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,7 @@
       <workItem from="1728387983251" duration="8611000" />
       <workItem from="1728445364208" duration="12031000" />
       <workItem from="1728466688830" duration="5387000" />
-      <workItem from="1728535874433" duration="1482000" />
+      <workItem from="1728535874433" duration="3069000" />
     </task>
     <servers />
   </component>
