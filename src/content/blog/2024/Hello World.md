@@ -2,7 +2,7 @@
 author: uiuiqkjn
 pubDatetime: 2024-10-9T19:33:50.257Z
 title: Hello World
-postSlug: Hello World
+postSlug: hello-world
 featured: false
 ogImage: ""
 tags:
