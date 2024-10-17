@@ -92,13 +92,12 @@ def extract_custom_features(model, image_path, layer_name):
 ​	计算特征的L2范数（欧氏距离），根据特征相似性对Support Set和Query进行匹配和分类。
 
 对于两个特征，它们之间的 L2 范数公式为：
-$$
-\|x - y\|_2 = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \dots + (x_n - y_n)^2}
-$$
+
+![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%B8%80.png)
+
 ​	将得到的查询图像名称和预测类别添加到结果列表，并写入.csv文件中，根据预测正确率（accuracy）作为评分指标，得到模型评分。计算公式如下：
-$$
-accurqacy = \frac{图片label预测正确的数量}{所有图片的数量}
-$$
+![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%BA%8C.png)
+
 ​	我的验证集目录结构为：
 
 ```
