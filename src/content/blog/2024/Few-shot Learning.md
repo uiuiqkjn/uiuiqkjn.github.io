@@ -17,7 +17,7 @@ description: An unexpected Few-shot Learning task
 
 ​	例如，假设我们有一个包含多个类别的数据集，包括猫、狗、老虎、人类和鸟类。我们的目标不是让模型具体识别出哪张图片是猫或人类，而是让模型能够理解不同类别之间的差异。现在，如果我们输入一张汽车的图片，虽然模型不知道这是一辆汽车，但当我们再输入两张汽车的图片时，尽管模型仍不清楚这些图片属于“汽车”这一类别，它可以很确定地告诉你这三张图片来自同一个类别，因为它们的特征相似。
 
-![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0.png)
+![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0.png)
 
 
 
@@ -93,10 +93,10 @@ def extract_custom_features(model, image_path, layer_name):
 
 对于两个特征，它们之间的 L2 范数公式为：
 
-![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%B8%80.png)
+![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%B8%80.png)
 
 ​	将得到的查询图像名称和预测类别添加到结果列表，并写入.csv文件中，根据预测正确率（accuracy）作为评分指标，得到模型评分。计算公式如下：
-![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%BA%8C.png)
+![](https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%BA%8C.png)
 
 ​	我的验证集目录结构为：
 
