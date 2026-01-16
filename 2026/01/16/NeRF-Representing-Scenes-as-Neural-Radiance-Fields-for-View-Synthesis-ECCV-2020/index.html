@@ -26,17 +26,17 @@
 <meta property="og:site_name" content="Yyang&#39;s Blog">
 <meta property="og:description" content="NeRF 论文精度&#x2F;代码详解Abstract本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_14-20-59_1768544480143_0.png">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_11-26-53_1768534019108_0.png">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-20-59_1768544480143_0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_11-26-53_1768534019108_0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
 <meta property="article:published_time" content="2026-01-16T13:17:14.000Z">
-<meta property="article:modified_time" content="2026-01-16T14:20:54.972Z">
+<meta property="article:modified_time" content="2026-01-16T14:24:36.859Z">
 <meta property="article:author" content="Yyang">
 <meta property="article:tag" content="论文精读">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
   
   
   
@@ -284,7 +284,7 @@
                 
                 <h1 id="NeRF-论文精度-代码详解"><a href="#NeRF-论文精度-代码详解" class="headerlink" title="NeRF 论文精度&#x2F;代码详解"></a>NeRF 论文精度&#x2F;代码详解</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，<strong>输入</strong>的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，<strong>输出</strong>是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)。我们通过查询沿相机光线的5D坐标来合成视图，并使用经典的体渲染技术将输出的颜色和密度投影到图像上。由于 volume rendering 本身是可微分的，因此输入只需要已知相机姿态的图像。本文描述了如何有效的优化神经辐射场以渲染具有复杂几何形状和外观场景的逼真新视图，并展示了优于先前神经渲染和视图合成工作的结果。</p>
 <p>结果不必多说，是当时最为先进的。</p>
-<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><img src="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-30-38_1768545075266_0"></p>
+<h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-30-38_1768545075266_0"></p>
 <p>我们将静态场景表示为一个连续的5D函数，该函数输出空间中每个点 (x,y,z) 沿各个方向 (θ,ϕ) 发射的辐射，以及每个点的 density (该密度类似于微分不透明度)，控制光线穿过该点 (x,y,z) 时累积的辐射亮度。文章通过 MLP 来表示这个映射，该网络不包含任何卷积层，通过单个五维坐标 (x,y,z,θ,ϕ) 回归到单个体密度和与视角相关的 RGB 颜色来表示该函数。</p>
 <p>为了渲染从特定角度的神经辐射场，我们:</p>
 <ol>
@@ -293,7 +293,7 @@
 <li>使用经典的体渲染技术将这些颜色和密度累计成2D图像。</li>
 </ol>
 <p>由于该过程本身是可微的，我们可以使用梯度下降法来优化该模型，方式是最小化每个观测图像与我们模型渲染出的对应视图之间的误差。最小化多个视图之间的误差可以促使神经网络预测出场景的连贯模型，具体做法是为包含真实场景内容的区域赋予高密度值和准确的颜色。具体pipline如下图:</p>
-<p><img src="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_14-20-59_1768544480143_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-20-59_1768544480143_0"></p>
+<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-20-59_1768544480143_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-20-59_1768544480143_0"></p>
 <p>我们发现，针对复杂场景优化神经辐射场表示的基本实现方法无法收敛到足够高分辨率的表示，并且每个相机光线所需的采样数量也过高。为了解决这些问题，我们采用位置编码转换输入的5D坐标，使 MLP 能够表示更高频率的函数，此外，我们还提出了一种分层采样方法，以减少充分采样这种高频场景表示所需的查询次数。</p>
 <p>本文提出的方法继承了体积表示的优势: 两者都能够表示复杂的真实世界几何形状和外观，并且都非常适合使用投影图像进行基于梯度的优化，至关重要的是，我们的方法克服了在高分辨率下对复杂场景进行建模时离散体积网络带来的高昂存储成本。总的来说，本文的主要贡献有:</p>
 <ol>
@@ -311,14 +311,14 @@
 <p>pic -&gt; 5D 向量(粒子的空间位姿)的前处理<br>4D 向量(粒子的颜色以及密度) -&gt; pic 的后处理</p>
 </blockquote>
 <p>我们通过让网络把体积密度 σ 预测为仅与位置 x 有关，来保证这种表征方法在不同视图下是一致的，同时将RGB颜色 c 预测为位置和观察方向的函数。为了达到这个目标，MLP 首先使用8层全连接层 (使用 ReLU 激活函数，每层 256 个通道) 处理输入的3D坐标 x ，并输出 σ 和一个 256 维特征向量。然后，将该特征向量与相机光线的视角方向连接起来，并传递给另一个全连接层(使用 ReLU 激活函数，每层 128 个通道)，该层输出与视角相关的RGB颜色。</p>
-<p><img src="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_11-26-53_1768534019108_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_11-26-53_1768534019108_0"></p>
+<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_11-26-53_1768534019108_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_11-26-53_1768534019108_0"></p>
 <h2 id="Volume-Rendering-with-Radiance-Fields"><a href="#Volume-Rendering-with-Radiance-Fields" class="headerlink" title="Volume Rendering with Radiance Fields"></a>Volume Rendering with Radiance Fields</h2><p>我们的5D神经辐射场将场景表示为空间中任意点的体积密度合方向性辐射。我们使用经典的体渲染原理来渲染穿过场景的任意光线的颜色。体积密度 σ(𝐱) 可以解释为光线终止于位置 x 处无穷小粒子的微分概率。相机光线 𝐫(t)&#x3D;𝐨+t𝐝 在近边界 $t_n$ 和远边界 $t_f$ 处的预期颜色 C(𝐫) 为：<br>$$<br>C(\mathbf{r}) &#x3D; \int_{t_n}^{t_f} T(t),\sigma(\mathbf{r}(t)),\mathbf{c}(\mathbf{r}(t), \mathbf{d}),dt,: where : T(t) &#x3D; \exp!\left(-\int_{t_n}^{t} \sigma(\mathbf{r}(s)),ds\right).<br>$$<br>函数 T(t) 表示从 $t_n$ 到 t 的 光线沿线的积累投射率，即光线从 $t_n$ 到 t 传播而不击中任何其他粒子的概率。从我们的连续神经辐射场渲染新视图，需要估计穿过所需虚拟相机每个像素的相机光线的积分 C(r).</p>
 <blockquote>
 <p>体渲染是渲染技术的一个分支，目的是解决云&#x2F;烟&#x2F;果冻等非刚性物体的渲染建模，将物质抽象成一团飘忽不定的粒子群，光线在穿过时，是光子跟粒子发生碰撞的过程。</p>
 </blockquote>
 <p><strong>粒子的采集</strong></p>
 <p>某一个像素 (u, v) 的颜色是沿着某一条射线上的无数个发光点的颜色“和“，可以利用相机模型去反推这条射线，这个射线的表示方法就是 𝐫(t)&#x3D;𝐨+t𝐝 。O 为射线原点，d 是方向，t 是距离，理论上 t 从 0 -&gt; 无穷。</p>
-<p><img src="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_19-24-59_1768562721181_0"></p>
+<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_19-24-59_1768562721181_0"></p>
 <p>我们使用数值积分法来估计这个连续积分。确定性积分法通常用于渲染离散化的体积网格，但它会有效的限制我们表示的分辨率，因为 MLP 只能在一组固定的离散位置进行查询。因此，我们采用分层抽样的方法，将  [$t_n$,$t_f$]  划分为 N 个等间距的区间，然后从每个区间内均匀随机抽取一个样本:<br>$$<br>t_i \sim \mathcal{U}!\left[<br>t_n + \frac{i-1}{N}(t_f - t_n),<br>;<br>t_n + \frac{i}{N}(t_f - t_n)<br>\right].<br>$$<br>尽管我们使用离散的样本来估计积分，但分层抽样使我们能够表示连续的场景，因为它使得 MLP 在优化过程中在连续的位置进行评估。我们使用这些样本，并根据 quadrature rule 估计 C(r)，也就是:<br>$$<br>\hat{C}(\mathbf{r}) &#x3D;<br>\sum_{i&#x3D;1}^{N}<br>T_i \left(1 - \exp(-\sigma_i \delta_i)\right)\mathbf{c}<em>i, :where:T_i &#x3D; \exp!\left(-\sum</em>{j&#x3D;1}^{i-1} \sigma_j \delta_j\right).<br>$$<br>其中，$δ_i$&#x3D;$t_{i+1}$ − $t_i$ 表示相邻样本之间的距离。该函数用于根据集合 ($𝐜_i$,$σ_i$) 的值计算 $\hat{C}(\mathbf{r})$ ，其微分性质显而易见，并可简化为使用 alpha 值 $α_i&#x3D;1−exp⁡(−σ_iδ_i)$ 的传统 alpha 合成方法。</p>
 <h2 id="Optimizing-a-Neural-Radiance-Field"><a href="#Optimizing-a-Neural-Radiance-Field" class="headerlink" title="Optimizing a Neural Radiance Field"></a>Optimizing a Neural Radiance Field</h2><p>在前一节中，我们描述了将场景建模为神经辐射场并从中渲染新视图所需的核心组件。然而，我们发现这些组件不足以达到最先进的质量。为了能够表示高分辨率的复杂场景，我们引入了两项改进。第一项改进是对输入坐标进行位置编码，以辅助 MLP 表示高频函数; 第二项改进是采用分层采样方法，以便高效地对这种高频表示进行采样。</p>
 <h3 id="Positional-encoding"><a href="#Positional-encoding" class="headerlink" title="Positional encoding"></a>Positional encoding</h3><p>尽管神经网络是一个通用的函数逼近器，我们发现直接对5D输入进行操作会导致渲染结果在表示颜色和几何形状的高频变化方面表现不佳。这与 <strong>Rahaman</strong> 等人的最新研究结果一致，该研究表明深度网络倾向于学习低频函数。他们还指出，在将输入传递给网络之前，使用高频函数将其映射到更高维的空间，可以更好地拟合包含高频变化的数据。</p>
@@ -330,7 +330,7 @@
 <p>我们不仅使用单个网络来表示场景，而是同时优化两个网络: 一个“粗略”网络和一个“精细”网络。我们首先使用分层抽样对一组 $N_C$ 位置进行采样，并评估这些位置的“粗略”网络。给定这个“粗略”网络的输出，我们随后生成沿着每条射线更精确的点采样，其中采样点偏向于体积的相关部分。为此，我们首先在方程式中重写粗略网络 $\hat{C}(\mathbf{r})$ 的 alpha 合成颜色作为沿射线的所有采样颜色 $c_i$ 的加权和:<br>$$<br>\hat{C}<em>c(\mathbf{r}) &#x3D;<br>\sum</em>{i&#x3D;1}^{N_c} w_i,\mathbf{c}_i, :<br>w_i &#x3D; T_i\left(1 - \exp(-\sigma_i \delta_i)\right).<br>$$<br>将这些权重归一化为 $\hat{w}<em>i &#x3D; \frac{w_i}{\sum</em>{j&#x3D;1}^{N_c} w_j}.$ 沿射线生成分段常数概率密度函数。我们使用逆变换采样从该分布中采样第二组 $N_f$ 个位置，在第一组和第二组采样点的并集上评估我们的“精细”网络，并使用等式3计算射线的最终渲染颜色 $\hat{C}_f(\mathbf{r})$ ，但使用所有 $N_c$+$N_f$ 个采样点。此过程将更多样本分配给我们期望包含可见内容的区域。 这达到了与importance sampling类似的目标，但我们将采样值用作整个积分域的非均匀离散化，而不是将每个样本视为整个积分的独立概率估计。</p>
 <h3 id="Implementation-details"><a href="#Implementation-details" class="headerlink" title="Implementation details"></a>Implementation details</h3><p>我们针对每个场景优化一个独立的神经连续体表示网络。这仅需要场景的RGB图像数据集、相应的相机位姿和内参以及场景边界 (对于合成数据，我们使用真实相机位姿、内参和边界; 对于真实数据，我们使用 COLMAP 运动结构重建包历来估计这些参数)。在每次优化迭代中，我们从数据集中的所有像素中随机抽取一批相机光线，然后按照分层采样方法，从粗略网络中查询 $N_c$ 样本，从精细网络中查询 $N_c$+$N_f$ 样本。接下来，我们使用渲染过程来渲染两组样本中每条光线的颜色。我们的损失函数是粗略渲染和精细渲染像素颜色和真实像素颜色之间的总平方误差:<br>$$<br>\mathcal{L} &#x3D;<br>\sum_{\mathbf{r} \in \mathcal{R}}<br>\Big[<br>| \hat{C}_c(\mathbf{r}) - C(\mathbf{r}) |_2^2<br>+<br>| \hat{C}_f(\mathbf{r}) - C(\mathbf{r}) |_2^2<br>\Big].<br>$$<br>其中，ℛ 表示每个批次中的光线集合， C(𝐫) 、$\hat{C}_c(\mathbf{r})$ 和 $\hat{C}_f(\mathbf{r})$ 分别表示光线 𝐫 的真实值、粗略体积预测值和精细体积预测值的 RGB 颜色。需要注意的是，尽管最终渲染结果来自 $\hat{C}_f(\mathbf{r})$ ，但我们也最小化了 $\hat{C}_c(\mathbf{r})$ 的损失，以便利用粗略网络的权重分布来分配精细网络中的样本。</p>
 <p>在我们的实验中，我们使用 4096 条光线的批次大小，每条光线在粗略体积的 $N_c$&#x3D;64 坐标处采样，并在精细体积的 $N_f$&#x3D;128 个额外坐标处采样。我们使用 Adam 优化器，学习率从 5×$10^{−4}$开始，并在优化过程中呈指数衰减至 5×$10^{−5}$ （其他 Adam 超参数保持默认值 $β_1$&#x3D;0.9 、 $β_2$&#x3D;0.999 和 ϵ&#x3D;$10^{−7}$ ）。单个场景的优化通常在单个 NVIDIA V100 GPU 上需要大约 10 万到 30 万次迭代才能收敛（大约需要 1 到 2 天）。</p>
-<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="https://github.com/uiuiqkjn/Blog-Pic/main//ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_17-29-11_1768555762505_0"></p>
+<h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_17-29-11_1768555762505_0"></p>
 <h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>我们的工作直接解决了先前使用 MLP 将物体和场景表示为连续函数的不足之处。我们证明，将场景表示为 5D 神经辐射场 (一种输出体密度和与视角相关的辐射亮度 (作为 3D 位置和 2D 视角方向的函数) 的 MLP) 比之前主流的训练深度卷积网络输出离散体素表示的方法能产生更好的渲染效果。</p>
 <p>尽管我们提出了一种分层采样策略来提高渲染的采样效率 (包括训练和测试)，但在研究如何高效优化和渲染神经辐射场方面，仍有许多工作要做。未来的另一个研究方向是可解释性: 诸如体素网格和网格状结构之类的采样表示可以推断渲染视图的预期质量和故障模式，但当我们将场景编码到深度神经网络的权重中时，如何分析这些问题尚不明确。我们相信，这项工作朝着基于真实世界图像的图形管线迈出了重要一步，在该管线中，复杂的场景可以由从真实物体和场景图像中优化得到的神经辐射场构成。</p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
