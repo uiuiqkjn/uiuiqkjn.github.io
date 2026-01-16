@@ -19,12 +19,12 @@
   <meta name="author" content="Yyang">
   <meta name="keywords" content="CV, CG, AI, Machine Learning, 🏸">
   
-    <meta name="description" content="NeRF 论文精度&#x2F;代码详解Abstract本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)">
+    <meta name="description" content="NeRF 论文精度&#x2F;代码详解Abstract本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置 (x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度">
 <meta property="og:type" content="article">
 <meta property="og:title" content="NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (ECCV 2020)">
 <meta property="og:url" content="https://uiuiqkjn.github.io/2026/01/16/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/index.html">
 <meta property="og:site_name" content="Yyang&#39;s Blog">
-<meta property="og:description" content="NeRF 论文精度&#x2F;代码详解Abstract本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)">
+<meta property="og:description" content="NeRF 论文精度&#x2F;代码详解Abstract本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置 (x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-20-59_1768544480143_0.png">
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
 <meta property="article:published_time" content="2026-01-16T13:17:14.000Z">
-<meta property="article:modified_time" content="2026-01-16T14:30:45.085Z">
+<meta property="article:modified_time" content="2026-01-16T14:34:36.994Z">
 <meta property="article:author" content="Yyang">
 <meta property="article:tag" content="论文精读">
 <meta name="twitter:card" content="summary_large_image">
@@ -282,7 +282,7 @@
             
               <div class="markdown-body">
                 
-                <h1 id="NeRF-论文精度-代码详解"><a href="#NeRF-论文精度-代码详解" class="headerlink" title="NeRF 论文精度&#x2F;代码详解"></a>NeRF 论文精度&#x2F;代码详解</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，<strong>输入</strong>的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，<strong>输出</strong>是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)。我们通过查询沿相机光线的5D坐标来合成视图，并使用经典的体渲染技术将输出的颜色和密度投影到图像上。由于 volume rendering 本身是可微分的，因此输入只需要已知相机姿态的图像。本文描述了如何有效的优化神经辐射场以渲染具有复杂几何形状和外观场景的逼真新视图，并展示了优于先前神经渲染和视图合成工作的结果。</p>
+                <h1 id="NeRF-论文精度-代码详解"><a href="#NeRF-论文精度-代码详解" class="headerlink" title="NeRF 论文精度&#x2F;代码详解"></a>NeRF 论文精度&#x2F;代码详解</h1><h2 id="Abstract"><a href="#Abstract" class="headerlink" title="Abstract"></a>Abstract</h2><p>本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，<strong>输入</strong>的是单个连续的5D坐标 (即空间位置 (x,y,z) 和视角 (θ,ϕ))，<strong>输出</strong>是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射亮度)。我们通过查询沿相机光线的5D坐标来合成视图，并使用经典的体渲染技术将输出的颜色和密度投影到图像上。由于 volume rendering 本身是可微分的，因此输入只需要已知相机姿态的图像。本文描述了如何有效的优化神经辐射场以渲染具有复杂几何形状和外观场景的逼真新视图，并展示了优于先前神经渲染和视图合成工作的结果。</p>
 <p>结果不必多说，是当时最为先进的。</p>
 <h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_14-30-38_1768545075266_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-30-38_1768545075266_0"></p>
 <p>我们将静态场景表示为一个连续的5D函数，该函数输出空间中每个点 (x,y,z) 沿各个方向 (θ,ϕ) 发射的辐射，以及每个点的 density (该密度类似于微分不透明度)，控制光线穿过该点 (x,y,z) 时累积的辐射亮度。文章通过 MLP 来表示这个映射，该网络不包含任何卷积层，通过单个五维坐标 (x,y,z,θ,ϕ) 回归到单个体密度和与视角相关的 RGB 颜色来表示该函数。</p>
@@ -306,7 +306,7 @@
 <p>尽管这些技术理论上可以表示复杂的高分辨率几何体，但迄今为止它们仅限于几何复杂度较低的简单形状，导致渲染结果过于平滑。我们证明，通过优化网络来编码 5D 辐射场 (具有 2D 视角相关外观的 3D 体)，可以表示更高分辨率的几何体和外观，从而渲染出复杂场景的逼真新视角。</p>
 <h3 id="View-synthesis-and-image-based-rendering"><a href="#View-synthesis-and-image-based-rendering" class="headerlink" title="View synthesis and image-based rendering"></a>View synthesis and image-based rendering</h3><p>在密集的视图采样下，可以通过简单的光场采样插值技术重建逼真的新视图。对于稀疏视图下的新视图合成，计算机视觉和图形学领域通过从观测图像预测传统的几何和外观表示取得了显著进展。一类常用的方法是使用基于网格的场景表示，这些表示具有漫反射或视图相关的外观。Differentiable rasterizers 或 pathtracers 可以使用梯度下降直接优化网格表示以重现一组输入图像。然而，基于图像重投影的梯度网格优化通常比较困难，可能是由于局部最小值或损失函数的条件数较差造成的。此外，该策略需要在优化之前提供一个具有固定拓扑结构的模板网格作为初始化，这通常不适用于无约束的现实世界场景。</p>
 <p>另一类方法是使用体积表示来解决一组输入的 RGB 图像中合成高质量逼真视图的任务。体积方法能真实的表示复杂的形状和材质，非常适合基于梯度的优化，并且比基于 Mesh 的方法产生的视觉干扰更少。早期的体积方法使用观测到的图像来直接给体积上色。最近，一些方法使用包含多个场景的大型数据集来训练深度网络，该网络能从一组输入图像中预测采样的体积表示，然后使用 alpha-compositing 或 沿光线学习的合成来渲染新的视图。其他研究针对每个特定场景优化了 CNN 和 采样体积网络的组合，使得 CNN 可以补偿来自低分辨率体积网络的离散化伪影，或者允许预测的体积网格根据输入的时间而变化。虽然这些技术在新视图合成方面取得不错的结果，但它们扩展到更高分辨率图像的能力受到了限制，因为离散采样导致时间和空间复杂度高，而渲染更高分辨率的图像需要对 3D 空间进行更精细的采样。本文提出方法在 MLP 的参数中编码连续的 volume 来规避这个问题，这不仅产生比先前体积方法更高质量的渲染，而且只需要更小的存储成本。</p>
-<h2 id="Neural-Radiance-Field-Scene-Representation"><a href="#Neural-Radiance-Field-Scene-Representation" class="headerlink" title="Neural Radiance Field Scene Representation"></a>Neural Radiance Field Scene Representation</h2><p>我们将连续场景表示为一个5D向量值函数，其输入为一个3D坐标点 𝐱&#x3D;(x,y,z) 和 2D视角方向 (θ,ϕ) ，输出为发射颜色 𝐜&#x3D;(r,g,b) 和体密度 σ 。实际上，我们将方向表示为3D笛卡尔单位向量 d 。我们使用MLP网络$F_Θ$: (𝐱,𝐝) → (𝐜,σ) 来近似这种连续的5D场景表示，并优化其权重 Θ，从而将每个输入的5D坐标映射到其对应的体密度和方向发射颜色。</p>
+<h2 id="Neural-Radiance-Field-Scene-Representation"><a href="#Neural-Radiance-Field-Scene-Representation" class="headerlink" title="Neural Radiance Field Scene Representation"></a>Neural Radiance Field Scene Representation</h2><p>我们将连续场景表示为一个5D向量值函数，其输入为一个3D坐标点 𝐱&#x3D;(x,y,z) 和 2D视角方向 (θ,ϕ) ，输出为发射颜色 𝐜&#x3D;(r,g,b) 和体密度 σ 。实际上，我们将方向表示为3D笛卡尔单位向量 d 。我们使用MLP网络 <svg xmlns="http://www.w3.org/2000/svg" width="2.813ex" height="1.913ex" viewBox="0 -680 1243.1 845.6" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" style=""><defs><path id="MJX-3-TEX-I-1D439" d="M48 1Q31 1 31 11Q31 13 34 25Q38 41 42 43T65 46Q92 46 125 49Q139 52 144 61Q146 66 215 342T285 622Q285 629 281 629Q273 632 228 634H197Q191 640 191 642T193 659Q197 676 203 680H742Q749 676 749 669Q749 664 736 557T722 447Q720 440 702 440H690Q683 445 683 453Q683 454 686 477T689 530Q689 560 682 579T663 610T626 626T575 633T503 634H480Q398 633 393 631Q388 629 386 623Q385 622 352 492L320 363H375Q378 363 398 363T426 364T448 367T472 374T489 386Q502 398 511 419T524 457T529 475Q532 480 548 480H560Q567 475 567 470Q567 467 536 339T502 207Q500 200 482 200H470Q463 206 463 212Q463 215 468 234T473 274Q473 303 453 310T364 317H309L277 190Q245 66 245 60Q245 46 334 46H359Q365 40 365 39T363 19Q359 6 353 0H336Q295 2 185 2Q120 2 86 2T48 1Z"></path><path id="MJX-3-TEX-N-398" d="M56 340Q56 423 86 494T164 610T270 680T388 705Q521 705 621 601T722 341Q722 260 693 191T617 75T510 4T388 -22T267 3T160 74T85 189T56 340ZM610 339Q610 428 590 495T535 598T463 651T384 668Q332 668 289 638T221 566Q168 485 168 339Q168 274 176 235Q189 158 228 105T324 28Q356 16 388 16Q415 16 442 24T501 54T555 111T594 205T610 339ZM223 263V422H263V388H514V422H554V263H514V297H263V263H223Z"></path></defs><g stroke="currentColor" fill="currentColor" stroke-width="0" transform="matrix(1 0 0 -1 0 0)"><g data-mml-node="math"><g data-mml-node="msub"><g data-mml-node="mi"><use xlink:href="#MJX-3-TEX-I-1D439"></use></g><g data-mml-node="TeXAtom" transform="translate(643, -150) scale(0.707)" data-mjx-texclass="ORD"><g data-mml-node="mo"><use xlink:href="#MJX-3-TEX-N-398"></use></g></g></g></g></g></svg> : (𝐱,𝐝) → (𝐜,σ) 来近似这种连续的5D场景表示，并优化其权重 Θ，从而将每个输入的5D坐标映射到其对应的体密度和方向发射颜色。</p>
 <blockquote>
 <p>pic -&gt; 5D 向量(粒子的空间位姿)的前处理</p>
 </blockquote>
