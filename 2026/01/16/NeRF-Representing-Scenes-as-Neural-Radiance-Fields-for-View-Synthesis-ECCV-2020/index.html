@@ -26,16 +26,16 @@
 <meta property="og:site_name" content="Yyang&#39;s Blog">
 <meta property="og:description" content="NeRF 论文精度&#x2F;代码详解 Abstract 本文提出一种方法，通过使用稀疏的输入视图集来优化底层连续体场景函数，从而在合成复杂场景的新视图方面取得了先进的成果。算法使用全连接 (非卷积) 深度网络来表示场景，输入的是单个连续的5D坐标 (即空间位置(x,y,z) 和视角 (θ,ϕ))，输出是该空间的 volume density (体积密度) 和视角相关的 radiance (辐射">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://uiuiqkjn.github.io/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
-<meta property="og:image" content="https://uiuiqkjn.github.io/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-20-59_1768544480143_0.png">
-<meta property="og:image" content="https://uiuiqkjn.github.io/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_11-26-53_1768534019108_0.png">
-<meta property="og:image" content="https://uiuiqkjn.github.io/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
+<meta property="og:image" content="https://uiuiqkjn.github.io/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
+<meta property="og:image" content="https://uiuiqkjn.github.io/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-20-59_1768544480143_0.png">
+<meta property="og:image" content="https://uiuiqkjn.github.io/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_11-26-53_1768534019108_0.png">
+<meta property="og:image" content="https://uiuiqkjn.github.io/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
 <meta property="article:published_time" content="2026-01-16T13:17:14.000Z">
-<meta property="article:modified_time" content="2026-01-16T13:36:54.302Z">
+<meta property="article:modified_time" content="2026-01-16T13:38:35.893Z">
 <meta property="article:author" content="Yyang">
 <meta property="article:tag" content="论文精读">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://uiuiqkjn.github.io/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
+<meta name="twitter:image" content="https://uiuiqkjn.github.io/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png">
   
   
   
@@ -289,14 +289,14 @@
 </ul>
 </li>
 <li><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
-<li><img src="/./source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-30-38.png"></li>
+<li><img src="/./NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-30-38_1768545075266_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-30-38.png"></li>
 <li>我们将静态场景表示为一个连续的5D函数，该函数输出空间中每个点 (x,y,z) 沿各个方向 (θ,ϕ) 发射的辐射，以及每个点的 density (该密度类似于微分不透明度)，控制光线穿过该点 (x,y,z) 时累积的辐射亮度。文章通过 MLP 来表示这个映射，该网络不包含任何卷积层，通过单个五维坐标 (x,y,z,θ,ϕ) 回归到单个体密度和与视角相关的 RGB 颜色来表示该函数。</li>
 <li>为了渲染从特定角度的神经辐射场，我们:<ul>
 <li>将相机光线穿过场景以生成一组采样的3D点;<br>logseq.order-list-type:: number</li>
 <li>使用这些点及其对应的2D观察方向作为神经网络的输入，以生成一组颜色和密度的输出;<br>logseq.order-list-type:: number</li>
 <li>使用经典的体渲染技术将这些颜色和密度累计成2D图像。<br>logseq.order-list-type:: number</li>
 <li>由于该过程本身是可微的，我们可以使用梯度下降法来优化该模型，方式是最小化每个观测图像与我们模型渲染出的对应视图之间的误差。最小化多个视图之间的误差可以促使神经网络预测出场景的连贯模型，具体做法是为包含真实场景内容的区域赋予高密度值和准确的颜色。具体pipline如下图:</li>
-<li><img src="/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-20-59_1768544480143_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-20-59.png">{:height 414, :width 717}<br>id:: 6969d8b9-c404-4e91-8d03-a7c1a51adb4c</li>
+<li><img src="/./NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_14-20-59_1768544480143_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_14-20-59.png">{:height 414, :width 717}<br>id:: 6969d8b9-c404-4e91-8d03-a7c1a51adb4c</li>
 </ul>
 </li>
 <li>我们发现，针对复杂场景优化神经辐射场表示的基本实现方法无法收敛到足够高分辨率的表示，并且每个相机光线所需的采样数量也过高。为了解决这些问题，我们采用位置编码转换输入的5D坐标，使 MLP 能够表示更高频率的函数，此外，我们还提出了一种分层采样方法，以减少充分采样这种高频场景表示所需的查询次数。</li>
@@ -325,7 +325,7 @@
 <li><h2 id="Neural-Radiance-Field-Scene-Representation"><a href="#Neural-Radiance-Field-Scene-Representation" class="headerlink" title="Neural Radiance Field Scene Representation"></a>Neural Radiance Field Scene Representation</h2><ul>
 <li>我们将连续场景表示为一个5D向量值函数，其输入为一个3D坐标点 𝐱&#x3D;(x,y,z) 和 2D视角方向 (θ,ϕ) ，输出为发射颜色 𝐜&#x3D;(r,g,b) 和体密度 σ 。实际上，我们将方向表示为3D笛卡尔单位向量 d 。我们使用MLP网络$F_Θ$: (𝐱,𝐝) → (𝐜,σ) 来近似这种连续的5D场景表示，并优化其权重 Θ，从而将每个输入的5D坐标映射到其对应的体密度和方向发射颜色。</li>
 <li>我们通过让网络把体积密度 σ 预测为仅与位置 x 有关，来保证这种表征方法在不同视图下是一致的，同时将RGB颜色 c 预测为位置和观察方向的函数。为了达到这个目标，MLP 首先使用8层全连接层 (使用 ReLU 激活函数，每层 256 个通道) 处理输入的3D坐标 x ，并输出 σ 和一个 256 维特征向量。然后，将该特征向量与相机光线的视角方向连接起来，并传递给另一个全连接层(使用 ReLU 激活函数，每层 128 个通道)，该层输出与视角相关的RGB颜色。</li>
-<li><img src="/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_11-26-53_1768534019108_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_11-26-53.png"></li>
+<li><img src="/./NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_11-26-53_1768534019108_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_11-26-53.png"></li>
 </ul>
 </li>
 <li><h2 id="Volume-Rendering-with-Radiance-Fields"><a href="#Volume-Rendering-with-Radiance-Fields" class="headerlink" title="Volume Rendering with Radiance Fields"></a>Volume Rendering with Radiance Fields</h2><ul>
@@ -373,7 +373,7 @@
 </ul>
 </li>
 <li><h2 id="Results"><a href="#Results" class="headerlink" title="Results"></a>Results</h2><ul>
-<li><img src="/hexo-blog/source/_posts/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_17-29-11_1768555762505_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_17-29-11.png"></li>
+<li><img src="/./NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/screenshot_2026-01-16_17-29-11_1768555762505_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_17-29-11.png"></li>
 </ul>
 </li>
 <li><h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><ul>
