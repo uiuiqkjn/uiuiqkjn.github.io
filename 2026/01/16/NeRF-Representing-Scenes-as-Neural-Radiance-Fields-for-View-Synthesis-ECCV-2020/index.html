@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_19-24-59_1768562721181_0.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_17-29-11_1768555762505_0.png">
 <meta property="article:published_time" content="2026-01-16T13:17:14.000Z">
-<meta property="article:modified_time" content="2026-01-16T14:24:36.859Z">
+<meta property="article:modified_time" content="2026-01-16T14:26:57.209Z">
 <meta property="article:author" content="Yyang">
 <meta property="article:tag" content="论文精读">
 <meta name="twitter:card" content="summary_large_image">
@@ -308,7 +308,10 @@
 <p>另一类方法是使用体积表示来解决一组输入的 RGB 图像中合成高质量逼真视图的任务。体积方法能真实的表示复杂的形状和材质，非常适合基于梯度的优化，并且比基于 Mesh 的方法产生的视觉干扰更少。早期的体积方法使用观测到的图像来直接给体积上色。最近，一些方法使用包含多个场景的大型数据集来训练深度网络，该网络能从一组输入图像中预测采样的体积表示，然后使用 alpha-compositing 或 沿光线学习的合成来渲染新的视图。其他研究针对每个特定场景优化了 CNN 和 采样体积网络的组合，使得 CNN 可以补偿来自低分辨率体积网络的离散化伪影，或者允许预测的体积网格根据输入的时间而变化。虽然这些技术在新视图合成方面取得不错的结果，但它们扩展到更高分辨率图像的能力受到了限制，因为离散采样导致时间和空间复杂度高，而渲染更高分辨率的图像需要对 3D 空间进行更精细的采样。本文提出方法在 MLP 的参数中编码连续的 volume 来规避这个问题，这不仅产生比先前体积方法更高质量的渲染，而且只需要更小的存储成本。</p>
 <h2 id="Neural-Radiance-Field-Scene-Representation"><a href="#Neural-Radiance-Field-Scene-Representation" class="headerlink" title="Neural Radiance Field Scene Representation"></a>Neural Radiance Field Scene Representation</h2><p>我们将连续场景表示为一个5D向量值函数，其输入为一个3D坐标点 𝐱&#x3D;(x,y,z) 和 2D视角方向 (θ,ϕ) ，输出为发射颜色 𝐜&#x3D;(r,g,b) 和体密度 σ 。实际上，我们将方向表示为3D笛卡尔单位向量 d 。我们使用MLP网络$F_Θ$: (𝐱,𝐝) → (𝐜,σ) 来近似这种连续的5D场景表示，并优化其权重 Θ，从而将每个输入的5D坐标映射到其对应的体密度和方向发射颜色。</p>
 <blockquote>
-<p>pic -&gt; 5D 向量(粒子的空间位姿)的前处理<br>4D 向量(粒子的颜色以及密度) -&gt; pic 的后处理</p>
+<p>pic -&gt; 5D 向量(粒子的空间位姿)的前处理</p>
+</blockquote>
+<blockquote>
+<p>4D 向量(粒子的颜色以及密度) -&gt; pic 的后处理</p>
 </blockquote>
 <p>我们通过让网络把体积密度 σ 预测为仅与位置 x 有关，来保证这种表征方法在不同视图下是一致的，同时将RGB颜色 c 预测为位置和观察方向的函数。为了达到这个目标，MLP 首先使用8层全连接层 (使用 ReLU 激活函数，每层 256 个通道) 处理输入的3D坐标 x ，并输出 σ 和一个 256 维特征向量。然后，将该特征向量与相机光线的视角方向连接起来，并传递给另一个全连接层(使用 ReLU 激活函数，每层 128 个通道)，该层输出与视角相关的RGB颜色。</p>
 <p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-16_11-26-53_1768534019108_0.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-16_11-26-53_1768534019108_0"></p>
