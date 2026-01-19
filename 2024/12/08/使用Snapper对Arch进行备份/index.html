@@ -19,24 +19,24 @@
   <meta name="author" content="咕噜咕哩布">
   <meta name="keywords" content="CV, CG, AI, Machine Learning, 🏸">
   
-    <meta name="description" content="小样本学习(Few-shot Learning，FSL)1. 概念——什么是小样本学习​	机器学习模型通常需要在足够大的训练数据集上进行训练，才能取得较好的预测效果。然而，小样本学习的目标是在有限的标记样本（通常只有几个）上进行学习，并能够识别新的、未见过的实例。 ​	例如，假设我们有一个包含多个类别的数据集，包括猫、狗、老虎、人类和鸟类。我们的目标不是让模型具体识别出哪张图片是猫或人类，而是让模">
+    <meta name="description" content="1. 安装Snapper包1pacman -S snapper  根据wiki中的建议，还可以安装GUI 前端 snapper-gui-git、btrfs-assistant 或 snapper-tools. 2. 建立snapper配置在 Btrfs 中，snapper 是以子卷为单位管理快照的。我们要先为子卷建立配置文件才能管理快照. 首先为snpper创建初始配置文件，这里我们不额外划分子卷">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Few-Shot Learning">
-<meta property="og:url" content="https://uiuiqkjn.github.io/2024/10/17/Few-shot-Learning/index.html">
+<meta property="og:title" content="使用Snapper对Arch进行备份">
+<meta property="og:url" content="https://uiuiqkjn.github.io/2024/12/08/%E4%BD%BF%E7%94%A8Snapper%E5%AF%B9Arch%E8%BF%9B%E8%A1%8C%E5%A4%87%E4%BB%BD/index.html">
 <meta property="og:site_name" content="咕噜咕哩布&#39;s Blog">
-<meta property="og:description" content="小样本学习(Few-shot Learning，FSL)1. 概念——什么是小样本学习​	机器学习模型通常需要在足够大的训练数据集上进行训练，才能取得较好的预测效果。然而，小样本学习的目标是在有限的标记样本（通常只有几个）上进行学习，并能够识别新的、未见过的实例。 ​	例如，假设我们有一个包含多个类别的数据集，包括猫、狗、老虎、人类和鸟类。我们的目标不是让模型具体识别出哪张图片是猫或人类，而是让模">
+<meta property="og:description" content="1. 安装Snapper包1pacman -S snapper  根据wiki中的建议，还可以安装GUI 前端 snapper-gui-git、btrfs-assistant 或 snapper-tools. 2. 建立snapper配置在 Btrfs 中，snapper 是以子卷为单位管理快照的。我们要先为子卷建立配置文件才能管理快照. 首先为snpper创建初始配置文件，这里我们不额外划分子卷">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0.png">
-<meta property="article:published_time" content="2024-10-17T07:56:50.000Z">
-<meta property="article:modified_time" content="2026-01-18T14:18:19.161Z">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Archlinux-logo-standard-version.svg/2560px-Archlinux-logo-standard-version.svg.png">
+<meta property="article:published_time" content="2024-12-08T10:22:03.000Z">
+<meta property="article:modified_time" content="2026-01-19T10:30:26.291Z">
 <meta property="article:author" content="咕噜咕哩布">
-<meta property="article:tag" content="小目标检测">
+<meta property="article:tag" content="ARCH Linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0.png">
+<meta name="twitter:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Archlinux-logo-standard-version.svg/2560px-Archlinux-logo-standard-version.svg.png">
   
   
   
-  <title>Few-Shot Learning - 咕噜咕哩布&#39;s Blog</title>
+  <title>使用Snapper对Arch进行备份 - 咕噜咕哩布&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Few-Shot Learning"></span>
+            <span id="subtitle" data-typed-text="使用Snapper对Arch进行备份"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-10-17 15:56" pubdate>
-          2024年10月17日 下午
+        <time datetime="2024-12-08 18:22" pubdate>
+          2024年12月8日 晚上
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          699 字
         
       </span>
     
@@ -236,7 +236,7 @@
         
         
         
-          9 分钟
+          6 分钟
         
       </span>
     
@@ -273,40 +273,72 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Few-Shot Learning</h1>
+            <h1 id="seo-header">使用Snapper对Arch进行备份</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="小样本学习-Few-shot-Learning，FSL"><a href="#小样本学习-Few-shot-Learning，FSL" class="headerlink" title="小样本学习(Few-shot Learning，FSL)"></a>小样本学习(Few-shot Learning，FSL)</h1><h3 id="1-概念——什么是小样本学习"><a href="#1-概念——什么是小样本学习" class="headerlink" title="1. 概念——什么是小样本学习"></a>1. 概念——什么是小样本学习</h3><p>​	机器学习模型通常需要在足够大的训练数据集上进行训练，才能取得较好的预测效果。然而，小样本学习的目标是在有限的标记样本（通常只有几个）上进行学习，并能够识别新的、未见过的实例。</p>
-<p>​	例如，假设我们有一个包含多个类别的数据集，包括猫、狗、老虎、人类和鸟类。我们的目标不是让模型具体识别出哪张图片是猫或人类，而是让模型能够理解不同类别之间的差异。现在，如果我们输入一张汽车的图片，虽然模型不知道这是一辆汽车，但当我们再输入两张汽车的图片时，尽管模型仍不清楚这些图片属于“汽车”这一类别，它可以很确定地告诉你这三张图片来自同一个类别，因为它们的特征相似。</p>
-<p><img src="https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2-Support-Set和Query"><a href="#2-Support-Set和Query" class="headerlink" title="2. Support Set和Query"></a>2. Support Set和Query</h3><p>​	小样本学习数据集通常包括<strong>支持集Support Set、查询集Query</strong>。Query通常不会出现在Training Set中，我们需要给Query提供一个Support Set，通过对比Query和Support Set间的相似度，来预测Query属于哪一类别。</p>
-<p>​	小样本分类准确率会受到Support Set中类别数量和样本数量的影响，随着类别数量增加，分类准确率会降低。随着每个类别样本数增加，分类会更准确</p>
-<blockquote>
-<p><em><strong>Support Set与Training Set的区别：</strong></em></p>
-<p><em>Training Set是一个非常大的数据集，每一类均包含非常多张图片。训练集足够大，可以用来训练一个深度神经网络。Support Set非常小，每一类只包含一张或几张图片，不足以训练一个深度神经网络。Support Set用于在预测时提供额外信息，使得模型能够断出所属类别不在训练集中的Query图片的类别。</em></p>
-</blockquote>
-<h3 id="3-Few-Shot-Image-Classification"><a href="#3-Few-Shot-Image-Classification" class="headerlink" title="3. Few-Shot Image Classification"></a>3. Few-Shot Image Classification</h3><p>​	对于该类问题的一个简单的思路，使用一个在图片覆盖域较为全面的数据集上训练的预训练模型进行迁移学习，提取Support Set和Query数据集中的最大可用信息，根据它们的共性确定分类。本文以<code>YOLOv8</code>为例，对其进行迁移学习，实现一个简单的Few-Shot Image Classification问题。</p>
-<p>​	首先，定义一个特征提取器，利用 <code>YOLO</code>模型从图像的特定层提取深度特征。具体思路如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 特征提取器类</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">FeatureExtractor</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, model_path, layer_name_to_extract</span>):<br>        <span class="hljs-variable language_">self</span>.model = YOLO(model_path)         <br>        <span class="hljs-variable language_">self</span>.features = &#123;&#125;                    <br>        <span class="hljs-variable language_">self</span>.layer_name_to_extract = layer_name_to_extract<br>        <span class="hljs-variable language_">self</span>._register_hooks()               <br>    <br>    <span class="hljs-comment"># 钩子函数，用于提取特征</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_hook_fn</span>(<span class="hljs-params">self, module, <span class="hljs-built_in">input</span>, output</span>):<br>        layer_name = <span class="hljs-built_in">str</span>(module)             <br>        <span class="hljs-variable language_">self</span>.features[layer_name] = output    <br>    <br>    <span class="hljs-comment"># 注册钩子函数</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">_register_hooks</span>(<span class="hljs-params">self</span>):<br>        layers = <span class="hljs-built_in">list</span>(<span class="hljs-variable language_">self</span>.model.named_modules())   <br>        <span class="hljs-keyword">for</span> name, layer <span class="hljs-keyword">in</span> layers:<br>            <span class="hljs-keyword">if</span> <span class="hljs-variable language_">self</span>.layer_name_to_extract <span class="hljs-keyword">in</span> name:  <br>                layer.register_forward_hook(<span class="hljs-variable language_">self</span>._hook_fn)   <br>    <br>    <span class="hljs-comment"># 处理输入图像并进行前向传播</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">extract_features</span>(<span class="hljs-params">self, image_path</span>):<br>        image = Image.<span class="hljs-built_in">open</span>(image_path)     <br><br>        input_tensor = preprocess(image).unsqueeze(<span class="hljs-number">0</span>)   <br><br>        <span class="hljs-variable language_">self</span>.features.clear()                <br>        _ = <span class="hljs-variable language_">self</span>.model(input_tensor)          <br>        <br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.features                  <br><br></code></pre></td></tr></table></figure>
+                <h2 id="1-安装Snapper包"><a href="#1-安装Snapper包" class="headerlink" title="1. 安装Snapper包"></a>1. 安装Snapper包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">pacman -S snapper<br></code></pre></td></tr></table></figure>
 
-<p>​	接着，定义特征提取函数，提取指定层的特征，本文以<code>model.model.9.linear</code>层为例，可以通过打印模型结构确定该层的参数。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 定义特征提取函数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">extract_custom_features</span>(<span class="hljs-params">model, image_path, layer_name</span>):<br>    feature_extractor = FeatureExtractor(model_path=model, layer_name_to_extract=layer_name)<br>    features = feature_extractor.extract_features(image_path)<br>    features = features[<span class="hljs-string">&#x27;Linear(in_features=1280, out_features=1000, bias=True)&#x27;</span>] <br><br>    <span class="hljs-keyword">return</span> features.cpu().numpy() <br></code></pre></td></tr></table></figure>
+<p>根据wiki中的建议，还可以安装GUI 前端 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/snapper-gui-git/">snapper-gui-git</a>、<a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/btrfs-assistant/">btrfs-assistant</a> 或 <a target="_blank" rel="noopener" href="https://aur.archlinux.org/packages/snapper-tools/">snapper-tools</a>.</p>
+<h2 id="2-建立snapper配置"><a href="#2-建立snapper配置" class="headerlink" title="2. 建立snapper配置"></a>2. 建立snapper配置</h2><p>在 Btrfs 中，snapper 是以子卷为单位管理快照的。我们要先为子卷建立配置文件才能管理快照.</p>
+<p>首先为snpper创建初始配置文件，这里我们不额外划分子卷，直接以 Btrfs 挂载点的根目录来进行操作.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">snapper -c cfg_root create-config -f btrfs /<br></code></pre></td></tr></table></figure>
 
-<p>​	使用上述特征提取函数循环提取查询集和支持集特征，分别储存至<code>support_features[]</code>和<code>query_features[]</code>字典中。</p>
-<p>​	计算特征的L2范数（欧氏距离），根据特征相似性对Support Set和Query进行匹配和分类。</p>
-<p>对于两个特征，它们之间的 L2 范数公式为：</p>
-<p><img src="https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%B8%80.png" srcset="/img/loading.gif" lazyload></p>
-<p>​	将得到的查询图像名称和预测类别添加到结果列表，并写入.csv文件中，根据预测正确率（accuracy）作为评分指标，得到模型评分。计算公式如下：<br><img src="https://github.com/uiuiqkjn/Blog-Pic/raw/main/myblog/Few-shot-Learning/%E5%B0%8F%E6%A0%B7%E6%9C%AC%E5%AD%A6%E4%B9%A0%E5%85%AC%E5%BC%8F%E4%BA%8C.png" srcset="/img/loading.gif" lazyload></p>
-<p>​	我的验证集目录结构为：</p>
-<figure class="highlight ceylon"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ceylon">├─ val<br><br>│  	├─ query<br><br>│  	└─ support<br><br>│     	├─ <span class="hljs-keyword">class</span><span class="hljs-number">_0</span><br><br>│  	  	├─ <span class="hljs-keyword">class</span><span class="hljs-number">_1</span><br><br>│  	  	├─ <span class="hljs-keyword">class</span><span class="hljs-number">_2</span>  <br><br>│ 		... ...<br><br>│  	  	└─ <span class="hljs-keyword">class</span><span class="hljs-number">_10</span> <br></code></pre></td></tr></table></figure>
+<p>这个指令将创建一个名为<code>cfg_root</code>的配置文件，备份文件类型为btrfs，备份根分区.</p>
+<p><code>cfg_root</code>路径一般位于 <code>/etc/snapper/configs/</code>，用户可以自行修改配置文件设置快照限制.</p>
+<p>此时，配置文件已经激活，snapper将会自动按时创建快照.</p>
+<h2 id="3-创建快照"><a href="#3-创建快照" class="headerlink" title="3. 创建快照"></a>3. 创建快照</h2><h3 id="3-1自动按时创建快照"><a href="#3-1自动按时创建快照" class="headerlink" title="3.1自动按时创建快照"></a>3.1自动按时创建快照</h3><p>使用<code>cron</code>守护进程或者启用<code>snapper-timeline.timer</code>都可以自动按时创建快照，另外，启用<code>snapper-cleanup.timer</code> 来定期清理老旧快照.方法参照<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Snapper">Snapper</a>.</p>
+<h3 id="3-2手动创建快照"><a href="#3-2手动创建快照" class="headerlink" title="3.2手动创建快照"></a>3.2手动创建快照</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">snapper -c cfg_root create<br></code></pre></td></tr></table></figure>
 
-<h3 id="4-参考文章"><a href="#4-参考文章" class="headerlink" title="4. 参考文章"></a>4. 参考文章</h3><ul>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40210586/article/details/118544825">图文带你理解什么是Few-shot Learning</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.ibm.com/topics/few-shot-learning#:~:text=IBM-,What%20is%20few%2Dshot%20learning%3F,suitable%20training%20data%20is%20scarce.">What is few-shot learning?</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/a493823882/article/details/80569888">范数（norm） 几种范数的简单介绍</a></li>
-</ul>
+<h3 id="3-3其他常用快照相关指定"><a href="#3-3其他常用快照相关指定" class="headerlink" title="3.3其他常用快照相关指定"></a>3.3其他常用快照相关指定</h3><p>创建前快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper create -t pre<br></code></pre></td></tr></table></figure>
+
+<p>创建后快照（需指定前快照编号）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper create -t post --pre-number &lt;前快照编号&gt;<br></code></pre></td></tr></table></figure>
+
+<p>创建带描述的快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper create -t single --description <span class="hljs-string">&quot;系统快照&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p>列出当前配置的所有快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper list<br></code></pre></td></tr></table></figure>
+
+<p>列出指定配置的快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper -c &lt;配置名称&gt; list<br></code></pre></td></tr></table></figure>
+
+<p>列出所有配置的快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper list -a<br></code></pre></td></tr></table></figure>
+
+<p>删除指定编号的快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper delete &lt;快照编号&gt;<br></code></pre></td></tr></table></figure>
+
+<p>删除多个快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper delete &lt;快照编号1&gt; &lt;快照编号2&gt;<br></code></pre></td></tr></table></figure>
+
+<p>显示两个快照之间的更改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper status &lt;快照编号1&gt;..&lt;快照编号2&gt;<br></code></pre></td></tr></table></figure>
+
+<p>显示指定文件的差异：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper diff &lt;快照编号1&gt;..&lt;快照编号2&gt; &lt;文件路径&gt;<br></code></pre></td></tr></table></figure>
+
+<p>撤销指定快照间的更改：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper undochange &lt;快照编号1&gt;..&lt;快照编号2&gt; &lt;文件路径&gt;<br></code></pre></td></tr></table></figure>
+
+<p>回滚到指定快照：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">sudo</span> snapper rollback &lt;快照编号&gt;<br></code></pre></td></tr></table></figure>
+
+<p>其他指令自行参照官方文档，这里不再给出.</p>
+<h2 id="4-常见需求"><a href="#4-常见需求" class="headerlink" title="4.常见需求"></a>4.常见需求</h2><h3 id="如何指定快照保存路径？"><a href="#如何指定快照保存路径？" class="headerlink" title="如何指定快照保存路径？"></a>如何指定快照保存路径？</h3><p>对于个人系统而言，<code>/</code> 与 <code>/home</code>通常挂载在不同卷上面，为了节约 <code>/</code> 的空间，通常选择将快照保存在 <code>/home</code> 中.</p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/wiki/Snapper">Arch wiki for Snapper</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/31082518">用 snapper 轻松玩转 Btrfs 的快照功能</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://tomoku-dm.github.io/2018/06/17/2-snapper/">Snapper 快照管理工具</a></p>
+</li>
+</ol>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><h3 id="为什么使用Snapper？"><a href="#为什么使用Snapper？" class="headerlink" title="为什么使用Snapper？"></a>为什么使用Snapper？</h3><p>Arch Linux 是滚动更新的系统，用户经常在更新后出现问题，而Snapper可以为系统在安装&#x2F;升级前后做快照，如果安装&#x2F;升级失败，就可以快速的恢复系统到正常状态. </p>
+<p>对于Arch Linux新用户建议阅读<a target="_blank" rel="noopener" href="https://wiki.archlinuxcn.org/zh/%E5%BB%BA%E8%AE%AE%E9%98%85%E8%AF%BB/%E7%BB%99%E6%96%B0%E7%94%A8%E6%88%B7%E7%9A%84%E5%85%B3%E4%BA%8E%E5%A6%82%E4%BD%95%E4%B8%8D%E5%8E%BB%E5%BC%84%E5%9D%8F_Arch_Linux_%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BB%BA%E8%AE%AE">《建议阅读&#x2F;给新用户的关于如何不去弄坏 Arch Linux 系统的建议》</a>以减少系统出错的概率.</p>
 
                 
               </div>
@@ -325,7 +357,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/CV/" class="category-chain-item">CV</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
@@ -340,7 +372,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%B0%8F%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" class="print-no-link">#小目标检测</a>
+        <a href="/tags/ARCH-Linux/" class="print-no-link">#ARCH Linux</a>
       
     </div>
   
@@ -352,8 +384,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Few-Shot Learning</div>
-      <div>https://uiuiqkjn.github.io/2024/10/17/Few-shot-Learning/</div>
+      <div>使用Snapper对Arch进行备份</div>
+      <div>https://uiuiqkjn.github.io/2024/12/08/使用Snapper对Arch进行备份/</div>
     </div>
     <div class="license-meta">
       
@@ -365,7 +397,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年10月17日</div>
+          <div>2024年12月8日</div>
         </div>
       
       
@@ -397,15 +429,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/12/08/%E4%BD%BF%E7%94%A8Snapper%E5%AF%B9Arch%E8%BF%9B%E8%A1%8C%E5%A4%87%E4%BB%BD/" title="使用Snapper对Arch进行备份">
+                      <a href="/2026/01/16/NeRF-Representing-Scenes-as-Neural-Radiance-Fields-for-View-Synthesis-ECCV-2020/" title="【论文精读】NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (ECCV 2020)">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">使用Snapper对Arch进行备份</span>
+                        <span class="hidden-mobile">【论文精读】NeRF: Representing Scenes as Neural Radiance Fields for View Synthesis (ECCV 2020)</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/10/17/Few-shot-Learning/" title="Few-Shot Learning">
+                        <span class="hidden-mobile">Few-Shot Learning</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
