@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>NeRF &amp; 3DGS 中一些常见的基本概念</title>
+    <link href="/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
+    <url>/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Positional-Encoding-位置编码"><a href="#Positional-Encoding-位置编码" class="headerlink" title="Positional Encoding 位置编码"></a>Positional Encoding 位置编码</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/c3474433cde93e65877d7d03dd1cb46c.jpg" alt="c3474433cde93e65877d7d03dd1cb46c"></p><h2 id="SfM-Structure-from-Motion-运动恢复结构"><a href="#SfM-Structure-from-Motion-运动恢复结构" class="headerlink" title="SfM (Structure from Motion 运动恢复结构)"></a>SfM (Structure from Motion 运动恢复结构)</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/a65c012f6022345e03b052569587d03d.jpg" alt="a65c012f6022345e03b052569587d03d"></p><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/668195eb6ec87ab3060c90778fbe8bd3.jpg" alt="668195eb6ec87ab3060c90778fbe8bd3"></p><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/257eff862eba93432903f38d0c845fc1.jpg" alt="257eff862eba93432903f38d0c845fc1"></p><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/3589c588f33add32a07ced3990b2d6d8.jpg" alt="3589c588f33add32a07ced3990b2d6d8"></p><h3 id="SfM-生成稀疏点云全流程"><a href="#SfM-生成稀疏点云全流程" class="headerlink" title="SfM 生成稀疏点云全流程"></a>SfM 生成稀疏点云全流程</h3><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/be1eacb447c516cfdbd81f58136a83da.jpg" alt="be1eacb447c516cfdbd81f58136a83da"></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.bilibili.com/video/BV1XP411q7yD/?spm_id_from=333.337.search-card.all.click&vd_source=11e85f20dc7ab80c17cc834885fa52ad">三维重建入门到精通，30分钟教你学会运动恢复结构SFM</a></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>CG</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>【论文精读】3D Gaussian Splatting for Real-Time Radiance Field Rendering SIGGRAPH 2023</title>
     <link href="/2026/01/18/%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%913D-Gaussian-Splatting-for-Real-Time-Radiance-Field-Rendering-SIGGRAPH-2023/"/>
     <url>/2026/01/18/%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%913D-Gaussian-Splatting-for-Real-Time-Radiance-Field-Rendering-SIGGRAPH-2023/</url>
