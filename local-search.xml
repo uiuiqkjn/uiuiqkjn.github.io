@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>3DGS 中投影部分公式推导</title>
+    <link href="/2026/01/20/3DGS-%E4%B8%AD%E6%8A%95%E5%BD%B1%E9%83%A8%E5%88%86%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/"/>
+    <url>/2026/01/20/3DGS-%E4%B8%AD%E6%8A%95%E5%BD%B1%E9%83%A8%E5%88%86%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/</url>
+    
+    <content type="html"><![CDATA[<h2 id="3DGS中投影流程"><a href="#3DGS中投影流程" class="headerlink" title="3DGS中投影流程"></a>3DGS中投影流程</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/980391ebe9c26d11fd3a6c9ddfd9ff8f.jpg" alt="980391ebe9c26d11fd3a6c9ddfd9ff8f"></p><h2 id="3DGS中透视矩阵公式推导-区别-OpenGL"><a href="#3DGS中透视矩阵公式推导-区别-OpenGL" class="headerlink" title="3DGS中透视矩阵公式推导 区别 OpenGL"></a>3DGS中透视矩阵公式推导 区别 OpenGL</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/51e50e03bf7452515feff4838d612f27.jpg" alt="51e50e03bf7452515feff4838d612f27"></p><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/07ba86dd1a58c73b8c0ee88e8fdbc8d4.jpg" alt="07ba86dd1a58c73b8c0ee88e8fdbc8d4"></p><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/ef55daf457639de1de6493017b4efc3f.jpg" alt="ef55daf457639de1de6493017b4efc3f"></p><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol><li><p><a href="https://zhuanlan.zhihu.com/p/718895401">3DGS学习笔记-透视投影矩阵推导</a></p></li><li><p><a href="https://www.bilibili.com/video/BV1My411h7tt/?spm_id_from=333.1387.homepage.video_card.click&vd_source=11e85f20dc7ab80c17cc834885fa52ad">三维重建\渲染算法3D Gaussian Splatting详解</a></p></li></ol>]]></content>
+    
+    
+    <categories>
+      
+      <category>CG</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>笔记</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NeRF 与 3DGS 中一些常见的基本概念</title>
     <link href="/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"/>
     <url>/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/</url>

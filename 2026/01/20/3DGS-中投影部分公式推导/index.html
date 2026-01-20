@@ -19,24 +19,24 @@
   <meta name="author" content="咕噜咕哩布">
   <meta name="keywords" content="CV, CG, AI, Machine Learning, 🏸">
   
-    <meta name="description" content="Positional Encoding 位置编码 SfM (Structure from Motion 运动恢复结构)    SfM 生成稀疏点云全流程 在3DGS中，SfM采用的是Colmap方法，其流程如下  3DGS 代码调试前一些相关知识   Reference三维重建入门到精通，30分钟教你学会运动恢复结构SFM 3D Gaussian Splatting代码调试之前的一些相关知识介绍(">
+    <meta name="description" content="3DGS中投影流程 3DGS中透视矩阵公式推导 区别 OpenGL   Reference 3DGS学习笔记-透视投影矩阵推导  三维重建\渲染算法3D Gaussian Splatting详解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NeRF 与 3DGS 中一些常见的基本概念">
-<meta property="og:url" content="https://uiuiqkjn.github.io/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:title" content="3DGS 中投影部分公式推导">
+<meta property="og:url" content="https://uiuiqkjn.github.io/2026/01/20/3DGS-%E4%B8%AD%E6%8A%95%E5%BD%B1%E9%83%A8%E5%88%86%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/index.html">
 <meta property="og:site_name" content="咕噜咕哩布&#39;s Blog">
-<meta property="og:description" content="Positional Encoding 位置编码 SfM (Structure from Motion 运动恢复结构)    SfM 生成稀疏点云全流程 在3DGS中，SfM采用的是Colmap方法，其流程如下  3DGS 代码调试前一些相关知识   Reference三维重建入门到精通，30分钟教你学会运动恢复结构SFM 3D Gaussian Splatting代码调试之前的一些相关知识介绍(">
+<meta property="og:description" content="3DGS中投影流程 3DGS中透视矩阵公式推导 区别 OpenGL   Reference 3DGS学习笔记-透视投影矩阵推导  三维重建\渲染算法3D Gaussian Splatting详解">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/c3474433cde93e65877d7d03dd1cb46c.jpg">
-<meta property="article:published_time" content="2026-01-19T05:01:44.000Z">
-<meta property="article:modified_time" content="2026-01-19T10:59:53.584Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-20_13-12-19.png">
+<meta property="article:published_time" content="2026-01-20T05:10:19.000Z">
+<meta property="article:modified_time" content="2026-01-20T05:16:30.464Z">
 <meta property="article:author" content="咕噜咕哩布">
 <meta property="article:tag" content="笔记">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/c3474433cde93e65877d7d03dd1cb46c.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-20_13-12-19.png">
   
   
   
-  <title>NeRF 与 3DGS 中一些常见的基本概念 - 咕噜咕哩布&#39;s Blog</title>
+  <title>3DGS 中投影部分公式推导 - 咕噜咕哩布&#39;s Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -202,7 +202,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="NeRF 与 3DGS 中一些常见的基本概念"></span>
+            <span id="subtitle" data-typed-text="3DGS 中投影部分公式推导"></span>
           
         </div>
 
@@ -213,8 +213,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-01-19 13:01" pubdate>
-          2026年1月19日 下午
+        <time datetime="2026-01-20 13:10" pubdate>
+          2026年1月20日 下午
         </time>
       </span>
     
@@ -225,7 +225,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          96 字
+          40 字
         
       </span>
     
@@ -273,24 +273,21 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">NeRF 与 3DGS 中一些常见的基本概念</h1>
+            <h1 id="seo-header">3DGS 中投影部分公式推导</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="Positional-Encoding-位置编码"><a href="#Positional-Encoding-位置编码" class="headerlink" title="Positional Encoding 位置编码"></a>Positional Encoding 位置编码</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/c3474433cde93e65877d7d03dd1cb46c.jpg" srcset="/img/loading.gif" lazyload alt="c3474433cde93e65877d7d03dd1cb46c"></p>
-<h2 id="SfM-Structure-from-Motion-运动恢复结构"><a href="#SfM-Structure-from-Motion-运动恢复结构" class="headerlink" title="SfM (Structure from Motion 运动恢复结构)"></a>SfM (Structure from Motion 运动恢复结构)</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/a65c012f6022345e03b052569587d03d.jpg" srcset="/img/loading.gif" lazyload alt="a65c012f6022345e03b052569587d03d"></p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/668195eb6ec87ab3060c90778fbe8bd3.jpg" srcset="/img/loading.gif" lazyload alt="668195eb6ec87ab3060c90778fbe8bd3"></p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/257eff862eba93432903f38d0c845fc1.jpg" srcset="/img/loading.gif" lazyload alt="257eff862eba93432903f38d0c845fc1"></p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/3589c588f33add32a07ced3990b2d6d8.jpg" srcset="/img/loading.gif" lazyload alt="3589c588f33add32a07ced3990b2d6d8"></p>
-<h3 id="SfM-生成稀疏点云全流程"><a href="#SfM-生成稀疏点云全流程" class="headerlink" title="SfM 生成稀疏点云全流程"></a>SfM 生成稀疏点云全流程</h3><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/be1eacb447c516cfdbd81f58136a83da.jpg" srcset="/img/loading.gif" lazyload alt="be1eacb447c516cfdbd81f58136a83da"></p>
-<p>在3DGS中，SfM采用的是Colmap方法，其流程如下</p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/screenshot_2026-01-19_18-57-46.png" srcset="/img/loading.gif" lazyload alt="screenshot_2026-01-19_18-57-46"></p>
-<h2 id="3DGS-代码调试前一些相关知识"><a href="#3DGS-代码调试前一些相关知识" class="headerlink" title="3DGS 代码调试前一些相关知识"></a>3DGS 代码调试前一些相关知识</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/feccfd7d31283f00b3741d71de385956.jpg" srcset="/img/loading.gif" lazyload alt="feccfd7d31283f00b3741d71de385956"></p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/4d9bea05147bf109d4ab2cbe8a472cc4.jpg" srcset="/img/loading.gif" lazyload alt="4d9bea05147bf109d4ab2cbe8a472cc4"></p>
-<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/95aefefa4c01d468a409e7b77caa7396.jpg" srcset="/img/loading.gif" lazyload alt="95aefefa4c01d468a409e7b77caa7396"></p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1XP411q7yD/?spm_id_from=333.337.search-card.all.click&vd_source=11e85f20dc7ab80c17cc834885fa52ad">三维重建入门到精通，30分钟教你学会运动恢复结构SFM</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1K442197uW/?spm_id_from=333.1387.homepage.video_card.click&vd_source=11e85f20dc7ab80c17cc834885fa52ad">3D Gaussian Splatting代码调试之前的一些相关知识介绍(坐标变换|四元数|球谐函数)</a></p>
+                <h2 id="3DGS中投影流程"><a href="#3DGS中投影流程" class="headerlink" title="3DGS中投影流程"></a>3DGS中投影流程</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/980391ebe9c26d11fd3a6c9ddfd9ff8f.jpg" srcset="/img/loading.gif" lazyload alt="980391ebe9c26d11fd3a6c9ddfd9ff8f"></p>
+<h2 id="3DGS中透视矩阵公式推导-区别-OpenGL"><a href="#3DGS中透视矩阵公式推导-区别-OpenGL" class="headerlink" title="3DGS中透视矩阵公式推导 区别 OpenGL"></a>3DGS中透视矩阵公式推导 区别 OpenGL</h2><p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/51e50e03bf7452515feff4838d612f27.jpg" srcset="/img/loading.gif" lazyload alt="51e50e03bf7452515feff4838d612f27"></p>
+<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/07ba86dd1a58c73b8c0ee88e8fdbc8d4.jpg" srcset="/img/loading.gif" lazyload alt="07ba86dd1a58c73b8c0ee88e8fdbc8d4"></p>
+<p><img src="https://raw.githubusercontent.com/uiuiqkjn/Blog-Pic/main/ImageBed/ef55daf457639de1de6493017b4efc3f.jpg" srcset="/img/loading.gif" lazyload alt="ef55daf457639de1de6493017b4efc3f"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/718895401">3DGS学习笔记-透视投影矩阵推导</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1My411h7tt/?spm_id_from=333.1387.homepage.video_card.click&vd_source=11e85f20dc7ab80c17cc834885fa52ad">三维重建\渲染算法3D Gaussian Splatting详解</a></p>
+</li>
+</ol>
 
                 
               </div>
@@ -336,8 +333,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>NeRF 与 3DGS 中一些常见的基本概念</div>
-      <div>https://uiuiqkjn.github.io/2026/01/19/NeRF-3DGS-中一些常见的基本概念/</div>
+      <div>3DGS 中投影部分公式推导</div>
+      <div>https://uiuiqkjn.github.io/2026/01/20/3DGS-中投影部分公式推导/</div>
     </div>
     <div class="license-meta">
       
@@ -349,7 +346,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年1月19日</div>
+          <div>2026年1月20日</div>
         </div>
       
       
@@ -381,18 +378,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/01/20/3DGS-%E4%B8%AD%E6%8A%95%E5%BD%B1%E9%83%A8%E5%88%86%E5%85%AC%E5%BC%8F%E6%8E%A8%E5%AF%BC/" title="3DGS 中投影部分公式推导">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">3DGS 中投影部分公式推导</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/01/18/%E3%80%90%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB%E3%80%913D-Gaussian-Splatting-for-Real-Time-Radiance-Field-Rendering-SIGGRAPH-2023/" title="【论文精读】3D Gaussian Splatting for Real-Time Radiance Field Rendering SIGGRAPH 2023">
-                        <span class="hidden-mobile">【论文精读】3D Gaussian Splatting for Real-Time Radiance Field Rendering SIGGRAPH 2023</span>
+                      <a href="/2026/01/19/NeRF-3DGS-%E4%B8%AD%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="NeRF 与 3DGS 中一些常见的基本概念">
+                        <span class="hidden-mobile">NeRF 与 3DGS 中一些常见的基本概念</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
