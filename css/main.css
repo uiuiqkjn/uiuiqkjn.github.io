@@ -856,7 +856,7 @@ i.iconfont {
   height: 100vh;
   background: transparent !important;
   pointer-events: none;
-  z-index: 0 !important;
+  z-index: -1 !important;
 }
 header,
 main,
