@@ -847,6 +847,24 @@ i.iconfont {
   font-size: 1em;
   line-height: 1;
 }
+#bg-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+}
+header,
+main,
+footer,
+.container {
+  position: relative;
+  z-index: 2;
+}
 :root {
   --color-mode: "light";
   --body-bg-color: #eee;
