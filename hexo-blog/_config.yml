@@ -1,13 +1,12 @@
 # Hexo Configuration
 ## Docs: https://hexo.io/docs/configuration.html
 ## Source: https://github.com/hexojs/hexo/
-
 # Site
-title: Yyang's Blog
-subtitle: 'A blog about programming and technology'
+title: 咕噜咕哩布's Blog
+subtitle: '人の一生は重荷を負うて遠き道を 行くがごとし。 急ぐべからず。'
 description: '我的个人主页与论文博客'
 keywords: CV, CG, AI, Machine Learning, 🏸
-author: Yyang
+author: 咕噜咕哩布
 language: zh-CN
 timezone: 'Asia/Shanghai'
 
