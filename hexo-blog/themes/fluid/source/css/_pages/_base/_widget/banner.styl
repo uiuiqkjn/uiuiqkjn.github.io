@@ -20,6 +20,15 @@
   .banner
     transition none !important
 
+.header-inner
+  min-height 280px
+  max-height 620px
+
+@media (max-width: 767px)
+  .header-inner
+    min-height 240px
+    max-height 420px
+
 if $banner-width-height-ratio > 0
   @media (max-width: unit($banner-width-height-ratio * 100, "vh"))
     .header-inner
