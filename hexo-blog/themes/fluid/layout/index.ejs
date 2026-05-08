@@ -13,7 +13,7 @@ page.banner_mask_alpha = theme.index.banner_mask_alpha
     <% if (index_img) { %>
       <div class="col-12 col-md-4 m-auto index-img">
         <a href="<%= post_url %>" target="<%- theme.index.post_url_target %>">
-          <img src="<%= url_for(index_img) %>" alt="<%= post.title %>">
+          <img src="<%= url_for(index_img) %>" alt="<%= post.title %>" loading="lazy" decoding="async">
         </a>
       </div>
     <% } %>
